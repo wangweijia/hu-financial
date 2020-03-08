@@ -29,9 +29,9 @@ const LinkingBoard = require('./src/data/LinkingBoard');
 const LimitUpMaxCount = require('./src/data/limitUpMaxCount');
 const HotModule = require('./src/data/hotModule');
 
-// const emotion = new Emotion();
-// const northwardCapital = new NorthwardCapital();
-// const limitUpDownCount = new LimitUpDownCount();
-// const linkingBoard = new LinkingBoard();
-// const limitUpMaxCount = new LimitUpMaxCount();
+const emotion = new Emotion();
+const northwardCapital = new NorthwardCapital();
+const limitUpDownCount = new LimitUpDownCount();
+const linkingBoard = new LinkingBoard();
+const limitUpMaxCount = new LimitUpMaxCount();
 const hotModule = new HotModule();
