@@ -17,10 +17,21 @@ class Emotion extends Object {
         const l = data.length - 1;
         const item = data[l];
         console.log('市场情绪:', item);
+        this.updateDate(item);
         return item;
       }
       return undefined;
     })
+  }
+
+  // http://118.190.162.218:9901
+  updateDate(data) {
+    Request.post('http://118.190.162.218:9901/emotion/save', data).then((res) => {
+      console.log(res);
+    });
+    // Request.post('http://127.0.0.1:9901/emotion/save', data).then((res) => {
+    //   console.log(res);
+    // });
   }
 }
 
