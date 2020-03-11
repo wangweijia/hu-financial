@@ -41,8 +41,14 @@ class LinkingBoard extends Object {
       DataType.Three,
       DataType.Four
     ];
-    allKeys.forEach((item) => {
-      this.getData(item);
+    const res = allKeys.map((item) => {
+      return this.getData(item);
+    })
+
+    Promise.all(res).then((data) => {
+      this.updateDate({
+        items: data
+      });
     })
   }
 
@@ -62,7 +68,7 @@ class LinkingBoard extends Object {
       Origin: 'http://www.iwencai.com',
       'Accept-Language': 'zh-CN,zh;q=0.9,en;q=0.8'
     }
-    Request.postJson(url, params, headers).then((res) => {
+    return Request.postJson(url, params, headers).then((res) => {
       // console.log(res);
       const {status_code, data = {}} = res;
       if (status_code === 0) {
@@ -71,9 +77,19 @@ class LinkingBoard extends Object {
         console.log(`${question} 总数:`,total);
         return total;
       }
-      return undefined;
+      return 0;
     });
   }
+
+  updateDate(data) {
+    Request.post('http://118.190.162.218:9901/data/save', {
+      table: 'linkingBoard',
+      params: data
+    }).then((res) => {
+      // console.log(res);
+    });
+  }
+
 }
 
 module.exports = LinkingBoard;

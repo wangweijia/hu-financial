@@ -26,12 +26,12 @@ class Emotion extends Object {
 
   // http://118.190.162.218:9901
   updateDate(data) {
-    Request.post('http://118.190.162.218:9901/emotion/save', data).then((res) => {
-      console.log(res);
+    Request.post('http://118.190.162.218:9901/data/save', {
+      table: 'emotion',
+      params: data
+    }).then((res) => {
+      // console.log(res);
     });
-    // Request.post('http://127.0.0.1:9901/emotion/save', data).then((res) => {
-    //   console.log(res);
-    // });
   }
 }
 

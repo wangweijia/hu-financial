@@ -22,10 +22,20 @@ class NorthwardCapital extends Object {
         const {dayNetAmtIn: sz} = hk2sz;
         const count = sh + sz;
         console.log('北向资金(万):', count);
+        this.updateDate({count})
         return count;
       }
       return 0;
     })
+  }
+
+  updateDate(data) {
+    Request.post('http://118.190.162.218:9901/data/save', {
+      table: 'northwardCapital',
+      params: data
+    }).then((res) => {
+      // console.log(res);
+    });
   }
 }
 
