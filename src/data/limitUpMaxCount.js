@@ -2,6 +2,7 @@
 // 记录最热门的板块有几个个股涨停
 
 const Request = require('../utils/request');
+const Api = require('../api');
 
 class LimitUpMaxCount extends Object {
   constructor(props) {
@@ -102,12 +103,7 @@ class LimitUpMaxCount extends Object {
   }
 
   updateDate(data) {
-    Request.post('http://118.190.162.218:9901/data/save', {
-      table: 'limitUpMaxCount',
-      params: data
-    }).then((res) => {
-      // console.log(res);
-    });
+    Api.updateDate('limitUpMaxCount', data);
   }
 }
 

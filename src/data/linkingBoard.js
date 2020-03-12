@@ -1,6 +1,8 @@
 // 连板
 const Request = require('../utils/request');
 const { URLSearchParams } = require('url');
+const Api = require('../api');
+
 
 const url = 'http://www.iwencai.com/unifiedwap/unified-wap/result/get-stock-pick';
 
@@ -82,12 +84,7 @@ class LinkingBoard extends Object {
   }
 
   updateDate(data) {
-    Request.post('http://118.190.162.218:9901/data/save', {
-      table: 'linkingBoard',
-      params: data
-    }).then((res) => {
-      // console.log(res);
-    });
+    Api.updateDate('linkingBoard', data);
   }
 
 }

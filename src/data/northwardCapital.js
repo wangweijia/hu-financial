@@ -1,5 +1,6 @@
 // 北向资金
 const Request = require('../utils/request');
+const Api = require('../api');
 
 class NorthwardCapital extends Object {
   constructor(props) {
@@ -22,20 +23,16 @@ class NorthwardCapital extends Object {
         const {dayNetAmtIn: sz} = hk2sz;
         const count = sh + sz;
         console.log('北向资金(万):', count);
-        this.updateDate({count})
         return count;
       }
       return 0;
+    }).then((count) => {
+      this.updateDate({count});
     })
   }
 
   updateDate(data) {
-    Request.post('http://118.190.162.218:9901/data/save', {
-      table: 'northwardCapital',
-      params: data
-    }).then((res) => {
-      // console.log(res);
-    });
+    Api.updateDate('northwardCapital', data);
   }
 }
 

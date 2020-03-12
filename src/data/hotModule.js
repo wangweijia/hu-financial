@@ -1,6 +1,6 @@
 // 热门板块
-
 const Request = require('../utils/request');
+const Api = require('../api');
 
 class HotModule extends Object {
   constructor(props) {
@@ -19,20 +19,18 @@ class HotModule extends Object {
       if (code === 20000) {
         const {items = []} = data;
         console.log('热门板块:', items);
-        this.updateDate({items});
         return items;
       }
       return undefined;
+    }).then((items) => {
+      if (items) {
+        this.updateDate({items});
+      }
     });
   }
 
   updateDate(data) {
-    Request.post('http://118.190.162.218:9901/data/save', {
-      table: 'hotModule',
-      params: data
-    }).then((res) => {
-      // console.log(res);
-    });
+    Api.updateDate('hotModule', data);
   }
 }
 

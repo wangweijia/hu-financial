@@ -1,5 +1,6 @@
 // 市场情绪
 const Request = require('../utils/request');
+const Api = require('../api');
 
 class Emotion extends Object {
   constructor(props) {
@@ -17,21 +18,18 @@ class Emotion extends Object {
         const l = data.length - 1;
         const item = data[l];
         console.log('市场情绪:', item);
-        this.updateDate(item);
         return item;
       }
       return undefined;
+    }).then((item) => {
+      if (item) {
+        this.updateDate(item);
+      }
     })
   }
 
-  // http://118.190.162.218:9901
   updateDate(data) {
-    Request.post('http://118.190.162.218:9901/data/save', {
-      table: 'emotion',
-      params: data
-    }).then((res) => {
-      // console.log(res);
-    });
+    Api.updateDate('emotion', data);
   }
 }
 
