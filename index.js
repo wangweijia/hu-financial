@@ -32,6 +32,8 @@ class main {
   }
 
   getInfo() {
+    this.limitUpDownCount = new LimitUpDownCount();
+
     if (this.todayEnable()) {
       // 在正常交易日-运行
 

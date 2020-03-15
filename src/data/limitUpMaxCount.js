@@ -18,7 +18,7 @@ class LimitUpMaxCount extends Object {
     const stocksStr = await this.getStocks(plateId);
     const count = await this.getStockList(stocksStr);
     this.info['count'] = count;
-    this.updateDate(this.info);
+    this.updateData(this.info);
     console.log('最热门的板块 and 个股涨停数(count):', this.info);
   }
 
@@ -102,8 +102,8 @@ class LimitUpMaxCount extends Object {
     });
   }
 
-  updateDate(data) {
-    Api.updateDate('limitUpMaxCount', data);
+  updateData(data) {
+    Api.updateData('limitUpMaxCount', data);
   }
 }
 

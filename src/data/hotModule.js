@@ -24,13 +24,13 @@ class HotModule extends Object {
       return undefined;
     }).then((items) => {
       if (items) {
-        this.updateDate({items});
+        this.updateData({items});
       }
     });
   }
 
-  updateDate(data) {
-    Api.updateDate('hotModule', data);
+  updateData(data) {
+    Api.updateData('hotModule', data);
   }
 }
 

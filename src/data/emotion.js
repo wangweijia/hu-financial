@@ -23,13 +23,13 @@ class Emotion extends Object {
       return undefined;
     }).then((item) => {
       if (item) {
-        this.updateDate(item);
+        this.updateData(item);
       }
     })
   }
 
-  updateDate(data) {
-    Api.updateDate('emotion', data);
+  updateData(data) {
+    Api.updateData('emotion', data);
   }
 }
 

@@ -27,12 +27,12 @@ class NorthwardCapital extends Object {
       }
       return 0;
     }).then((count) => {
-      this.updateDate({count});
+      this.updateData({count});
     })
   }
 
-  updateDate(data) {
-    Api.updateDate('northwardCapital', data);
+  updateData(data) {
+    Api.updateData('northwardCapital', data);
   }
 }
 

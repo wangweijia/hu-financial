@@ -8,23 +8,23 @@ const url = 'http://www.iwencai.com/unifiedwap/unified-wap/result/get-stock-pick
 
 const DataType = {
   One: {
-    question: '连续涨停天数=1',
+    question: '连续涨停天数=1 去除ST',
     key: 1,
   },
   Two: {
-    question: '连续涨停天数=2',
+    question: '连续涨停天数=2 去除ST',
     key: 2,
   },
   Three: {
-    question: '连续涨停天数=3',
+    question: '连续涨停天数=3 去除ST',
     key: 3,
   },
   Four: {
-    question: '连续涨停天数=4',
+    question: '连续涨停天数=4 去除ST',
     key: 4,
   },
   more: {
-    question: '连续涨停天数>4',
+    question: '连续涨停天数>4 去除ST',
     key: 1,
   },
 }
@@ -48,7 +48,7 @@ class LinkingBoard extends Object {
     })
 
     Promise.all(res).then((data) => {
-      this.updateDate({
+      this.updateData({
         items: data
       });
     })
@@ -83,8 +83,8 @@ class LinkingBoard extends Object {
     });
   }
 
-  updateDate(data) {
-    Api.updateDate('linkingBoard', data);
+  updateData(data) {
+    Api.updateData('linkingBoard', data);
   }
 
 }
