@@ -84,7 +84,7 @@ class LinkingBoard extends Object {
   }
 
   updateData(data) {
-    Api.updateData('linkingBoard', data);
+    Api.linkingBoardSave(data);
   }
 
 }
