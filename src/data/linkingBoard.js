@@ -37,21 +37,30 @@ class LinkingBoard extends Object {
   }
 
   getAllData() {
-    const allKeys = [
-      DataType.One,
-      DataType.Two,
-      DataType.Three,
-      DataType.Four
-    ];
-    const res = allKeys.map((item) => {
-      return this.getData(item);
-    })
+    const items = []; 
+    const  getNum = async (index = 1, resolve) => {
+      const question = `连续涨停天数=${index} 去除ST'`;
+      const item = {
+        question,
+        key: index
+      }
+      const i = await this.getData(item) || 0;
+      items.push(i);
+      if (i > 0) {
+        getNum(index + 1, resolve);
+      } else {
+        if (resolve) {
+          resolve();
+        }
+      }
+    }
 
-    Promise.all(res).then((data) => {
-      this.updateData({
-        items: data
-      });
+    const p = new Promise((resolve) => {
+      getNum(1, resolve);
     })
+    p.then(() => {
+      this.updateData({items});
+    });
   }
 
   getData(type) { 
