@@ -9,11 +9,11 @@ const url = 'http://www.iwencai.com/unifiedwap/unified-wap/result/get-stock-pick
 
 const DataType = {
   Up: {
-    question: '涨停 去除ST',
+    question: '涨停 去除ST 去除科创',
     key: 'limit_up_count',
   },
   Down: {
-    question: '跌停 去除ST',
+    question: '跌停 去除ST 去除科创',
     key: 'limit_down_count',
   },
 }
