@@ -43,7 +43,10 @@ class LinkingBoard extends Object {
   getAllData(count) {
     const items = []; 
     const  getNum = async (index = 1, resolve) => {
-      const question = `连续涨停天数=${index} 去除ST 去除科创'`;
+      let question = `连续涨停天数=${index} 去除ST 去除科创'`;
+      if (index === 1) {
+        question = '首板 去除st 去除科创';
+      }
       const item = {
         question,
         key: index
